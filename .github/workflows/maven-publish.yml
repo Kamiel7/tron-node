@@ -1,0 +1,64 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Maven Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+https://github.com/tronprotocol/protocol/blob/9ae1f628928d76ea95fa013fa3046ea8ea8d68a1/api/api.proto
+git remote add origin https://github.com/Kamiel7/tron-node.git
+git branch -M main
+git push -u origin main
+$ java -jar FullNode.jar -c main_net_config.conf
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+bash deploy_tron.sh
+bash deploy_tron.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|privatenet] --db [keep|remove|backup] --heap-size <heapsize>
+
+--app	Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
+--net	Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
+--db	Optional, The way of data processing could be keep, remove and backup. Default is keep. If you launch two different networks, like from mainnet to testnet or from testnet to mainnet, you need to delete database.
+--trust-node	Optional, It only works when deploying SolidityNode. Default is 127.0.0.1:50051. The specified gRPC service of Fullnode, like 127.0.0.1:50051 or 13.125.249.129:50051.
+--rpc-port	Optional, Port of grpc. Default is 50051. If you deploy SolidityNode and FullNode on the same host，you need to configure different ports.
+--commit	Optional, commitid of project.
+--branch	Optional, branch of project.  Mainnet default is latest release and Testnet default is master.
+--heap-size  Optional, jvm option: Xmx. The default heap-size is 0.8 * memory size.
+--work_space  Optional, default is current directory.
+https://github.com/Kamiel7/tron-node.git
+git remote add origin https://github.com/Kamiel7/tron-node.git
+git branch -M main
+git push -u origin main
+$ java -jar FullNode.jar -c main_net_config.conf
+bash deploy_grpc_gateway.sh --rpchost [rpc host ip] --rpcport [rpc port number] --httpport [http port number] 
+
+--rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is "localhost".
+--rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is 50051.
+--httpport The port intends to provide http service provided by grpc gateway. Default value is 18890.
