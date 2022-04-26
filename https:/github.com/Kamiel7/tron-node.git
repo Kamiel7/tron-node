@@ -1,0 +1,27 @@
+git remote add origin https://github.com/Kamiel7/tron-node.git
+git branch -M main
+git push -u origin main
+bash deploy_tron.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|privatenet] --db [keep|remove|backup] --heap-size <heapsize>
+
+--app	Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
+--net	Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
+--db	Optional, The way of data processing could be keep, remove and backup. Default is keep. If you launch two different networks, like from mainnet to testnet or from testnet to mainnet, you need to delete database.
+--trust-node	Optional, It only works when deploying SolidityNode. Default is 127.0.0.1:50051. The specified gRPC service of Fullnode, like 127.0.0.1:50051 or 13.125.249.129:50051.
+--rpc-port	Optional, Port of grpc. Default is 50051. If you deploy SolidityNode and FullNode on the same host，you need to configure different ports.
+--commit	Optional, commitid of project.
+--branch	Optional, branch of project.  Mainnet default is latest release and Testnet default is master.
+--heap-size  Optional, jvm option: Xmx. The default heap-size is 0.8 * memory size.
+--work_space  Optional, default is current directory.https://github.com/tronprotocol/documentation/blob/adb7aac2b308fdc3f88e377d9e504338cb9eb439/TRX/Tron-exchange.md
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+# User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+bash deploy_tron.sh --app SolidityNode --trust-node <grpc-ip:grpc-port>
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+git remote add origin https://github.com/Kamiel7/tron-node.git
+git branch -M main
+git push -u origin main
+https://github.com/Kamiel7/tron-node.git
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+bash deploy_tron.sh
