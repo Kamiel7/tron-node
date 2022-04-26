@@ -22,3 +22,6 @@ git remote add origin https://github.com/Kamiel7/tron-node.git
 git branch -M main
 git push -u origin main
 https://github.com/Kamiel7/tron-node.git
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+bash deploy_tron.sh
